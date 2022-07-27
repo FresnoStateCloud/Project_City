@@ -11,7 +11,7 @@
     <body>
         <a-scene>
             <a-assets>
-                <a-asset-item id="cell" src="./assets/Plant_Cell_VR.glb"></a-asset-item>
+                <a-asset-item id="cell" src="./assets/VRplant_cell.glb"></a-asset-item>
                 <a-asset-item id="cellTex" src="./assets/cell_texture.jpeg"></a-asset-item>
             </a-assets>
 
@@ -24,19 +24,22 @@
 
             <a-entity environment="skyType: atmosphere; ground: none"></a-entity>
 
-            <a-entity gltf-model="#cell" position="0 -6 6" rotation="0 -80 0" scale="2.1 2.1 2.1" hidden="true"></a-entity>
+            <a-entity gltf-model="#cell" position="0 -6 6" rotation="0 -80 0" scale="20 20 20"></a-entity>
             
             <!-- Checkpoints -->
             <!-- FIXME: Make the current, visited checkpoint invisible -->
-            <a-sphere checkpoint color="red" radius="0.5" position="0 1 26"></a-sphere>
-            <a-sphere checkpoint color="red" radius="0.5" position="0 0.5 8"></a-sphere>
-            <a-sphere checkpoint color="red" radius="0.5" position="5 0.5 12"></a-sphere>
-            <a-sphere checkpoint color="red" radius="0.5" position="3.5 -2 15"></a-sphere>
+
+            <!-- Overview -->
+            <a-sphere checkpoint color="red" radius="0.5" position="0 5 20"></a-sphere>
+            
+            <a-sphere checkpoint color="red" radius="0.5" position="0 7 15"></a-sphere>
+            <!-- Nucleus -->
+            <a-sphere checkpoint color="red" radius="0.5" position="7 2.5 10"></a-sphere>
+            <a-sphere checkpoint color="red" radius="0.5" position="3.5 -3 15"></a-sphere>
             <a-sphere checkpoint color="red" radius="0.5" position="-3 -4 20"></a-sphere>
             
             
             <a-light type="ambient" color="#445451"></a-light>
-            <a-light type="spot" angle="45" position="0 0 8"></a-light>
         </a-scene>
         
     </body>
