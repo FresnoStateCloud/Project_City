@@ -7,34 +7,32 @@
         <script src="https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
         <!-- Movement -->
         <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+        <!-- Face Camera -->
+        <script src="./scripts/look-at.js"></script>
     </head>
     <body>
         <a-scene>
             <a-assets>
                 <a-asset-item id="cell" src="./assets/VRplant_cell.glb"></a-asset-item>
-                <a-asset-item id="cellTex" src="./assets/cell_texture.jpeg"></a-asset-item>
+                <a-asset-item id="teleport" src="./assets/teleport1.glb"></a-asset-item>
             </a-assets>
 
             <!-- Camera -->
-            <a-entity position="0 0.7 0" id="pov">
-                <a-camera camera="active: true; spectator: false;" look-controls="pointerLockEnabled:true" movement-controls="controls: checkpoint;" checkpoint-controls="mode: teleport" wasd-controls="enabled: false;" position="0 1.6 22">
+            <a-entity position="0 1.6 0" id="pov">
+                <a-camera id="firstPerson" camera="active: true; spectator: false;" look-controls="pointerLockEnabled:true" movement-controls="controls: checkpoint;" checkpoint-controls="mode: teleport" wasd-controls="enabled: true;" position="0 1.6 0">
                     <a-cursor></a-cursor>
                 </a-camera>
             </a-entity>
 
             <a-entity environment="skyType: atmosphere; ground: none"></a-entity>
 
-            <a-entity gltf-model="#cell" position="0 -6 6" rotation="0 -80 0" scale="20 20 20"></a-entity>
-            
-            <!-- Checkpoints -->
-            <!-- FIXME: Make the current, visited checkpoint invisible -->
+            <a-entity gltf-model="#cell" position="0 -7.5 -8" rotation="0 -80 0" scale="20 20 20"></a-entity>
 
             <!-- Overview -->
-            <a-sphere checkpoint color="red" radius="0.5" position="0 5 20"></a-sphere>
-            
-            <a-sphere checkpoint color="red" radius="0.5" position="0 7 15"></a-sphere>
+            <a-entity checkpoint look-at="#firstPerson" gltf-model="#teleport" position="0 0 0" scale="0.25 0.25 0.25"></a-entity>
             <!-- Nucleus -->
-            <a-sphere checkpoint color="red" radius="0.5" position="7 2.5 10"></a-sphere>
+            <a-entity checkpoint look-at="#firstPerson" gltf-model="#teleport" position="7 0 -5" scale="0.25 0.25 0.25"></a-entity>
+
             <a-sphere checkpoint color="red" radius="0.5" position="3.5 -3 15"></a-sphere>
             <a-sphere checkpoint color="red" radius="0.5" position="-3 -4 20"></a-sphere>
             
