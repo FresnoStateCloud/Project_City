@@ -9,6 +9,8 @@
         <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
         <!-- Face Camera -->
         <script src="./scripts/look-at.js"></script>
+        <!-- Fuse Listener -->
+        <script src="./scripts/is-fusing.js"></script>
     </head>
     <body>
         <a-scene>
@@ -18,17 +20,15 @@
             </a-assets>
 
             <!-- Camera -->
-            <a-entity position="0 1.6 0" id="pov">
-                <a-camera 
-                    id="firstPerson" 
-                    camera="active: true; spectator: false;" 
-                    look-controls="pointerLockEnabled:true" 
-                    movement-controls="controls: checkpoint;" 
-                    checkpoint-controls="mode: teleport" 
-                    wasd-controls="enabled: true;" 
-                    position="0 1.6 0">
-                    <a-cursor></a-cursor>
-                </a-camera>
+            <a-entity id="rig"
+            movement-controls="controls: checkpoint"
+            checkpoint-controls="mode: teleport">
+                <a-entity camera
+                        id="cameraRig"
+                        position="0 1.6 0"
+                        look-controls="pointerLockEnabled: true">
+                        <a-cursor fuse="true" fuse-timeout="1000"></a-cursor>
+                </a-entity>
             </a-entity>
 
             <a-entity environment="skyType: atmosphere; ground: none"></a-entity>
@@ -36,17 +36,17 @@
             <a-entity gltf-model="#cell" position="0 -7.5 -8" rotation="0 -80 0" scale="20 20 20"></a-entity>
 
             <!-- Overview -->
-            <a-entity checkpoint look-at="#firstPerson" gltf-model="#teleport" position="0 0 0" scale="0.25 0.25 0.25"></a-entity>
+            <a-entity checkpoint look-at="#rig" gltf-model="#teleport" position="0 0 0" scale="0.3 0.3 0.3"></a-entity>
             <!-- Nucleus -->
-            <a-entity checkpoint look-at="#firstPerson" gltf-model="#teleport" position="7 0 -5" scale="0.25 0.25 0.25"></a-entity>
+            <a-entity checkpoint look-at="#rig" gltf-model="#teleport" position="7 0 -5" scale="0.3 0.3 0.3"></a-entity>
             <!-- Mitochondria -->
-            <a-entity checkpoint look-at="#firstPerson" gltf-model="#teleport" position="-7.5 -2 0" scale="0.25 0.25 0.25"></a-entity>
+            <a-entity checkpoint look-at="#rig" gltf-model="#teleport" position="-7.5 -2 0" scale="0.3 0.3 0.3"></a-entity>
             <!-- Cell Membrane -->
-            <a-entity checkpoint look-at="#firstPerson" gltf-model="#teleport" position="7 -1.5 5" scale="0.25 0.25 0.25"></a-entity>
+            <a-entity checkpoint look-at="#rig" gltf-model="#teleport" position="7 -1.5 5" scale="0.3 0.3 0.3"></a-entity>
             <!-- Golgi~san -->
-            <a-entity checkpoint look-at="#firstPerson" gltf-model="#teleport" position="2.5 6.5 -15" scale="0.25 0.25 0.25"></a-entity>
+            <a-entity checkpoint look-at="#rig" gltf-model="#teleport" position="2.5 6.5 -15" scale="0.3 0.3 0.3"></a-entity>
             <!-- Cell Membrane -->
-            <a-entity checkpoint look-at="#firstPerson" gltf-model="#teleport" position="10 7.5 -13" scale="0.25 0.25 0.25"></a-entity>
+            <a-entity checkpoint look-at="#rig" gltf-model="#teleport" position="10 7.5 -13" scale="0.3 0.3 0.3"></a-entity>
             
             <a-light type="ambient" color="#445451"></a-light>
         </a-scene>
