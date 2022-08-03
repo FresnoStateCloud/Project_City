@@ -20,17 +20,16 @@
             </a-assets>
 
             <!-- Camera -->
-            <a-camera 
-                    id="cameraRig" 
-                    active="true" 
-                    spectator="false" 
-                    look-controls="pointerLockEnabled:true" 
-                    movement-controls="controls: checkpoint;" 
-                    checkpoint-controls="mode: teleport" 
-                    wasd-controls="enabled: false;"
-                    position="0 1.6 0">
-                    <a-cursor fuse="true" fuse-timeout="1200" cursor-listener></a-cursor>
-            </a-camera>
+            <a-entity id="rig"
+            movement-controls="controls: checkpoint"
+            checkpoint-controls="mode: teleport">
+                <a-entity camera
+                        id="cameraRig"
+                        position="0 1.6 0"
+                        look-controls="pointerLockEnabled: true">
+                        <a-cursor fuse="true"></a-cursor>
+                </a-entity>
+            </a-entity>
 
             <a-entity environment="skyType: atmosphere; ground: none"></a-entity>
 
