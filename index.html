@@ -5,9 +5,9 @@
     <title>First Steps</title>
     <meta name="description" content="First Steps" />
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-
     <!--Enviornment-->
     <script src="https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
+    <script src="./scripts/disable-cull.js"></script>
   </head>
 
   <body>
@@ -17,6 +17,7 @@
           id="robot"
           src="./assets/Project_Roboto_with_logo.glb"
         ></a-asset-item>
+        <img id="sign" src="./assets/sign.png" />
       </a-assets>
 
       <a-entity
@@ -25,9 +26,17 @@
       <!--Robot Model-->
       <a-entity
         gltf-model="#robot"
-        position="0 0 -5"
+        position="0 0 -4"
         rotation="0 -90 0"
-      ></a-entity>
+        disable-culling
+      >
+        <a-image
+          src="#sign"
+          position="1.03 1.2 0"
+          rotation="0 90 0"
+          scale="0.7 0.5 1"
+        ></a-image>
+      </a-entity>
       <!--Lighting-->
       <a-light type="ambient" color="#445451"></a-light>
     </a-scene>
