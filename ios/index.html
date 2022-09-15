@@ -17,7 +17,7 @@
           if (sceneEl.is('vr-mode')) {
             document
               .getElementById('robot')
-              .setAttribute('src', '../assets/Project_Roboto_NewLogo.glb');
+              .setAttribute('gltf-model', '#robot1');
           }
         },
       });
@@ -28,7 +28,11 @@
     <a-scene>
       <a-assets>
         <a-asset-item
-          id="robot"
+          id="robot1"
+          src="../assets/Project_Roboto_NewLogo.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="robot2"
           src="../assets/Project_Roboto_withcolor.glb"
         ></a-asset-item>
         <img id="sign" src="../assets/sticker.png" />
@@ -39,7 +43,8 @@
       ></a-entity>
       <!--Robot Model-->
       <a-entity
-        gltf-model="#robot"
+        id="robot"
+        gltf-model="#robot2"
         position="0 0 -4"
         rotation="0 -90 0"
         disable-culling
