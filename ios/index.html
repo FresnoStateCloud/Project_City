@@ -8,6 +8,20 @@
     <!--Environment-->
     <script src="https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
     <script src="../scripts/disable-cull.js"></script>
+
+    <script type="text/javascript">
+      // Change model on enter-vr mode
+      AFRAME.registerComponent('do-something', {
+        init: function () {
+          var sceneEl = this.el;
+          if (sceneEl.is('vr-mode')) {
+            document
+              .getElementById('robot')
+              .setAttribute('src', '../assets/Project_Roboto_NewLogo.glb');
+          }
+        },
+      });
+    </script>
   </head>
 
   <body>
@@ -15,7 +29,7 @@
       <a-assets>
         <a-asset-item
           id="robot"
-          src="../assets/Project_Roboto_with_logo.glb"
+          src="../assets/Project_Roboto_withcolor.glb"
         ></a-asset-item>
         <img id="sign" src="../assets/sticker.png" />
       </a-assets>
