@@ -11,7 +11,7 @@
 
     <script type="text/javascript">
       // Change model on enter-vr mode
-      AFRAME.registerComponent('do-something', {
+      AFRAME.registerComponent('ios-swap', {
         init: function () {
           var sceneEl = document
             .querySelector('a-scene')
@@ -32,7 +32,7 @@
   </head>
 
   <body>
-    <a-scene>
+    <a-scene ios-swap>
       <a-assets>
         <a-asset-item
           id="robot1"
