@@ -14,23 +14,17 @@
       AFRAME.registerComponent('do-something', {
         init: function () {
           var sceneEl = this.el;
-          // if (sceneEl.is('vr-mode')) {
-          // document
-          //   .getElementById('robot')
-          //   .setAttribute('gltf-model', '#robot1');
-          // }
-          this.el.addEventListener('enter-vr', () => {
+          if (sceneEl.is('vr-mode')) {
             console.log('ENTER VR CHANGE MODEL');
             let rooboot = document.getElementById('robot');
             rooboot.setAttribute('gltf-model', '#robot1');
             console.log(rooboot.attributes);
-          });
-          this.el.addEventListener('exit-vr', () => {
+          } else {
             console.log('BYE VR GO BACK TO OTHER MODEL');
             let rooboot = document.getElementById('robot');
             rooboot.setAttribute('gltf-model', '#robot2');
             console.log(rooboot.attributes);
-          });
+          }
         },
       });
     </script>
