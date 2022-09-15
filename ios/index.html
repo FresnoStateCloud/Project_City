@@ -14,11 +14,21 @@
       AFRAME.registerComponent('do-something', {
         init: function () {
           var sceneEl = this.el;
-          if (sceneEl.is('vr-mode')) {
+          // if (sceneEl.is('vr-mode')) {
+          // document
+          //   .getElementById('robot')
+          //   .setAttribute('gltf-model', '#robot1');
+          // }
+          this.el.addEventListener('enter-vr', () => {
             document
               .getElementById('robot')
               .setAttribute('gltf-model', '#robot1');
-          }
+          });
+          this.el.addEventListener('exit-vr', () => {
+            document
+              .getElementById('robot')
+              .setAttribute('gltf-model', '#robot2');
+          });
         },
       });
     </script>
