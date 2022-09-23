@@ -8,16 +8,41 @@
     <!--Environment-->
     <script src="https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
     <script src="../scripts/disable-cull.js"></script>
+
+    <script type="text/javascript">
+      // Change model on enter-vr mode
+      AFRAME.registerComponent('ios-swap', {
+        init: function () {
+          var sceneEl = document
+            .querySelector('a-scene')
+            .addEventListener('enter-vr', this.swapModels.bind(this));
+        },
+        swapModels: function () {
+          // var thisEl = this.el;
+
+          // thisEl.setAttribute('animation', '');
+
+          console.log('ENTER VR CHANGE MODEL');
+          let rooboot = document.getElementById('robot');
+          rooboot.setAttribute('gltf-model', '#robot1');
+          console.log(rooboot.attributes);
+        },
+      });
+    </script>
   </head>
 
   <body>
-    <a-scene>
+    <a-scene ios-swap>
       <a-assets>
         <a-asset-item
-          id="robot"
-          src="../assets/Project_Roboto_with_logo.glb"
+          id="robot1"
+          src="../assets/Project_Roboto_NewLogo.glb"
         ></a-asset-item>
-        <img id="sign" src="../assets/sign.png" />
+        <a-asset-item
+          id="robot2"
+          src="../assets/Project_Roboto_withcolor.glb"
+        ></a-asset-item>
+        <img id="sign" src="../assets/sticker.png" />
       </a-assets>
 
       <a-entity
@@ -25,7 +50,8 @@
       ></a-entity>
       <!--Robot Model-->
       <a-entity
-        gltf-model="#robot"
+        id="robot"
+        gltf-model="#robot2"
         position="0 0 -4"
         rotation="0 -90 0"
         disable-culling
