@@ -3,3 +3,6 @@
 
 # Dependency directories
 node_modules/
+
+# testing environment HTTPS certificates
+.vscode
