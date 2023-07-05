@@ -19,8 +19,21 @@
         <a-asset-item id="robot" src="./assets/Project_Roboto_NewLogo.glb"></a-asset-item>
       </a-assets>
 
+      <script>
+        AFRAME.registerComponent("detect_mobile", {
+          init: function () {
+            var isMobile = AFRAME.utils.device.isMobile()
+            if (isMobile == false) {
+              console.log("This is not a mobile device");
+            } else {
+              console.log("This is a mobile device");
+            }
+          }
+        })
+      </script>
+      
         <!-- Camera -->
-        <a-entity id="rig">
+        <a-entity detect_mobile id="rig">
           <a-entity
             camera
             id="cameraRig"
